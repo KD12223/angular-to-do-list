@@ -1,0 +1,48 @@
+<app-header (addItemEvent)="addItem($event)" (clearItemEvent)="clearItems()"></app-header>
+<div class="drag-drop">
+  <div class="container">
+    <h2>To do</h2>
+
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+         [cdkDropListConnectedTo]="doneList" class="list" (cdkDropListDropped)="drop($event)">
+      <mat-card *ngFor="let item of todo" cdkDrag>
+        <mat-card-header>
+          <mat-card-title>{{ item.title }}</mat-card-title>
+          <mat-card-subtitle>Due: {{ item.dueDate | date }}</mat-card-subtitle>
+          <mat-icon class="alert" matTooltip="High Priority" *ngIf="item.highPriority">priority_high</mat-icon>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button mat-icon-button aria-label="Delete" (click)="deleteToDo(item, todo)">
+            <mat-icon matTooltip="Delete">delete</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Edit" (click)="openDialog(item)">
+            <mat-icon matTooltip="Edit">edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Done</h2>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+         [cdkDropListConnectedTo]="todoList" class="list" (cdkDropListDropped)="drop($event)">
+      <mat-card *ngFor="let item of done" cdkDrag>
+        <mat-card-header>
+          <mat-card-title class="completed">{{ item.title }}</mat-card-title>
+          <mat-card-subtitle>Due: {{ item.dueDate | date  }}</mat-card-subtitle>
+          <mat-icon class="alert" matTooltip="High Priority" *ngIf="item.highPriority">priority_high</mat-icon>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button mat-icon-button aria-label="Delete" (click)="deleteToDo(item, done)">
+            <mat-icon matTooltip="Delete">delete</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Edit" disabled>
+            <mat-icon matTooltip="Edit">edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
