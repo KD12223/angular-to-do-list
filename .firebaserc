@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-to-do-list-c9186": {
+      "hosting": {
+        "angular-to-do-list": [
+          "angular-to-do-list-c9186"
+        ]
+      }
+    }
+  }
+}

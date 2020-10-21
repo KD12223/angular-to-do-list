@@ -3,4 +3,5 @@ export class ToDo {
   details: string;
   dueDate: string;
   highPriority: boolean;
+  completed: boolean;
 }
