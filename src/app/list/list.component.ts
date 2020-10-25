@@ -47,8 +47,9 @@ export class ListComponent implements OnInit {
       this.service.itemsRef.update(key, { completed }).then(_ => {
         const message = item.completed === true ? item.title + ' is not complete' :
           item.title + ' is complete';
+        const color = item.completed === true ? 'snack-bar-red' : 'snack-bar-green';
         this.snackBar.open(message, 'X', {
-          panelClass: ['snack-bar'],
+          panelClass: [color],
           horizontalPosition: 'right',
           duration: 5000
         });
@@ -73,7 +74,7 @@ export class ListComponent implements OnInit {
       this.service.updateItem(key, result.value.title, result.value.details,
         result.value.dueDate.getTime(), result.value.highPriority, false).then(_ => {
           this.snackBar.open(result.value.title + ' has been updated', 'X', {
-            panelClass: ['snack-bar'],
+            panelClass: ['snack-bar-green'],
             horizontalPosition: 'right',
             duration: 5000
           });
@@ -84,7 +85,7 @@ export class ListComponent implements OnInit {
   deleteToDo(key: string): void {
     this.service.deleteItem(key).then(_ => {
       this.snackBar.open('Successfully deleted the item!', 'X', {
-        panelClass: ['snack-bar'],
+        panelClass: ['snack-bar-green'],
         horizontalPosition: 'right',
         duration: 5000
       });
@@ -94,7 +95,7 @@ export class ListComponent implements OnInit {
   addItem(item: ToDo): void {
     this.service.addItem(item.title, item.details, item.dueDate, item.highPriority, item.completed);
     this.snackBar.open(item.title + ' has been added to the list!', 'X', {
-      panelClass: ['snack-bar'],
+      panelClass: ['snack-bar-green'],
       horizontalPosition: 'right',
       duration: 5000
     });
@@ -102,8 +103,8 @@ export class ListComponent implements OnInit {
 
   clearItems(): void {
     this.service.deleteEverything().then(_ => {
-      this.snackBar.open('All items have been cleared!', 'x', {
-        panelClass: ['snack-bar'],
+      this.snackBar.open('All items have been cleared!', 'X', {
+        panelClass: ['snack-bar-green'],
         horizontalPosition: 'right',
         duration: 5000
       });

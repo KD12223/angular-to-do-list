@@ -12,7 +12,7 @@ export class ToDoService {
   items: Observable<ToDo[]>;
 
   constructor(private db: AngularFireDatabase) {
-    this.itemsRef = db.list('item');
+    this.itemsRef = db.list('item', ref => ref.orderByChild('dueDate'));
     this.items = this.itemsRef.snapshotChanges().pipe(
       map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
     );

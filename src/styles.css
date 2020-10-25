@@ -3,11 +3,20 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.snack-bar {
+.snack-bar-green {
   color: white !important;
   background-color: #60ac36;
 }
 
-.snack-bar .mat-simple-snackbar-action {
+.snack-bar-green .mat-simple-snackbar-action {
+  color: white;
+}
+
+.snack-bar-red {
+  color: white !important;
+  background-color: #e4513b;
+}
+
+.snack-bar-red .mat-simple-snackbar-action {
   color: white;
 }
