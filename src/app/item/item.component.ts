@@ -17,7 +17,7 @@ export class ItemComponent implements OnInit {
     this.form = this.formBuilder.group({
       title: [this.data.toDo.title, Validators.required],
       details: this.data.toDo.details,
-      dueDate: [this.data.toDo.dueDate, Validators.required],
+      dueDate: [new Date(this.data.toDo.dueDate), Validators.required],
       highPriority: this.data.toDo.highPriority
     });
     this.edit = this.data.edit;

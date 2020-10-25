@@ -11,6 +11,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +47,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

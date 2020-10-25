@@ -27,13 +27,13 @@ export class HeaderComponent implements OnInit {
         return;
       }
 
-      const toDo = new ToDo();
-      toDo.title = result.value.title;
-      toDo.details = result.value.details;
-      toDo.dueDate = result.value.dueDate;
-      toDo.highPriority = result.value.highPriority;
-
-      this.addItemEvent.emit(toDo);
+      this.addItemEvent.emit({
+        title: result.value.title,
+        details: result.value.details,
+        dueDate: result.value.dueDate.getTime(),
+        highPriority: result.value.highPriority,
+        completed: false
+      });
     });
   }
 

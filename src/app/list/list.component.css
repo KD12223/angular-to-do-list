@@ -69,7 +69,6 @@ mat-card::ng-deep.mat-card-header-text {
 }
 
 .completed {
-  text-decoration-color: #ff4081;
   text-decoration: line-through;
 }
 
